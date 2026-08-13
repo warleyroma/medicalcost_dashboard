@@ -151,15 +151,34 @@ st.divider()
 col1, col2 = st.columns(2)
 
 with col1:
-    line = px.line(
-        df.sort_values("age"),
-        x="age",
-        y="charges",
-        color="smoker",
-        title="Evolução do custo por idade"
+    hist = px.histogram(
+        df,
+        x="charges",
+        nbins=40,
+        title="Distribuição dos custos médicos",
+        labels={
+            "charges": "Custo médico (US$)"
+        }
     )
-    apply_plot_theme(line)
-    st.plotly_chart(line, use_container_width=True)
+
+    hist.add_vline(
+        x=df["charges"].median(),
+        line_dash="dash",
+        line_color="#3b82f6",
+        annotation_text="Mediana",
+        annotation_position="top"
+    )
+
+    hist.add_vline(
+        x=df["charges"].mean(),
+        line_dash="dash",
+        line_color="#ef4444",
+        annotation_text="Média",
+        annotation_position="top"
+    )
+
+    apply_plot_theme(hist)
+    st.plotly_chart(hist, use_container_width=True)
 
 with col2:
     scatter = px.scatter(
