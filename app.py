@@ -186,8 +186,14 @@ with col2:
         x="bmi",
         y="charges",
         color="smoker",
-        title="IMC vs Custos Médicos",
-        opacity=0.7
+        title="Relação entre IMC e Custos Médicos",
+        labels={
+            "bmi": "IMC",
+            "charges": "Custo médico (US$)",
+            "smoker": "Tabagismo"
+        },
+        opacity=0.65,
+        trendline="ols"
     )
     apply_plot_theme(scatter)
     st.plotly_chart(scatter, use_container_width=True)
