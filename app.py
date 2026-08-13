@@ -119,17 +119,28 @@ if not st.session_state.mensagem_exibida:
 col1, col2, col3, col4 = st.columns(4)
 
 with col1:
-    st.metric("👥 Total de Registros", len(df))
+    st.metric(
+        "👥 Pessoas analisadas",
+        f"{len(df):,}"
+    )
 
 with col2:
-    st.metric("💰 Custo Médio", f"${df['charges'].mean():,.2f}")
+    st.metric(
+        "💰 Custo médio",
+        f"${df['charges'].mean():,.2f}"
+    )
 
 with col3:
-    st.metric("🚬 % Fumantes", f"{(df['smoker'].value_counts(normalize=True)['yes']*100):.1f}%")
+    st.metric(
+        "📊 Custo mediano",
+        f"${df['charges'].median():,.2f}"
+    )
 
 with col4:
-    st.metric("📈 Custo Máximo", f"${df['charges'].max():,.2f}")
-
+    st.metric(
+        "📈 Custo máximo",
+        f"${df['charges'].max():,.2f}"
+    )
 st.divider()
 
 
