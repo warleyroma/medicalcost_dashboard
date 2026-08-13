@@ -14,10 +14,12 @@ st.set_page_config(
 # ---------------------------
 # Carregamento dos dados
 # ---------------------------
+
 @st.cache_data
 def load_data():
-    url = "https://raw.githubusercontent.com/stedy/Machine-Learning-with-R-datasets/master/insurance.csv"
-    return pd.read_csv(url)
+    DATA_PATH = "data/insurance.csv"
+    df = pd.read_csv(DATA_PATH)
+    return df
 
 df = load_data()
 
