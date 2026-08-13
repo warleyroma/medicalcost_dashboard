@@ -99,7 +99,7 @@ st.title("📊 Insurance Cost Dashboard")
 st.caption("Análise interativa de custos médicos baseada em dados reais")
 
 st.success("Dados carregados com sucesso 🚀")
-st.write(df.head())
+#st.write(df.head())
 
 # ---------------------------
 # KPIs
