@@ -132,35 +132,7 @@ with col4:
 
 st.divider()
 
-# ---------------------------
-# Análise de custo por tabagismo
-# ---------------------------
-smoker_avg = df[df["smoker"] == "yes"]["charges"].mean()
-non_smoker_avg = df[df["smoker"] == "no"]["charges"].mean()
 
-difference_pct = ((smoker_avg - non_smoker_avg) / non_smoker_avg) * 100
-
-st.subheader("🚬 Impacto do tabagismo nos custos médicos")
-
-col1, col2, col3 = st.columns(3)
-
-with col1:
-    st.metric(
-        "Custo médio — Fumantes",
-        f"${smoker_avg:,.2f}"
-    )
-
-with col2:
-    st.metric(
-        "Custo médio — Não fumantes",
-        f"${non_smoker_avg:,.2f}"
-    )
-
-with col3:
-    st.metric(
-        "Diferença",
-        f"{difference_pct:.1f}%"
-    )
 
 # ---------------------------
 # Gráficos principais
