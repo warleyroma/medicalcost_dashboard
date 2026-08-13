@@ -1,6 +1,7 @@
 import pandas as pd
 import streamlit as st
 import plotly.express as px
+import time
 
 # ---------------------------
 # Configuração inicial
@@ -98,8 +99,19 @@ def apply_plot_theme(fig):
 st.title("📊 Insurance Cost Dashboard")
 st.caption("Análise interativa de custos médicos baseada em dados reais")
 
-st.success("Dados carregados com sucesso 🚀")
-#st.write(df.head())
+# 1. Inicializa uma variável na memória para controlar se já mostrou a mensagem
+if "mensagem_exibida" not in st.session_state:
+    st.session_state.mensagem_exibida = False
+
+# 2. Se ainda não mostrou, exibe por 5 segundos e depois apaga
+if not st.session_state.mensagem_exibida:
+    alerta = st.empty()
+    alerta.success("Dados carregados com sucesso 🚀")
+    time.sleep(5)
+    alerta.empty()
+    
+    # Marca como exibida para não repetir se a página recarregar
+    st.session_state.mensagem_exibida = True
 
 # ---------------------------
 # KPIs
